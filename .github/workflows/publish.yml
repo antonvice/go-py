@@ -36,5 +36,5 @@ jobs:
 
       - name: Publish package to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
-        # No API token is needed in the 'with' block. 
-        # The action automatically handles authentication via the id-token permission.
+        with: 
+          api_token: ${{ secrets.PYPI_API_TOKEN }}
