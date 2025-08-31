@@ -28,7 +28,7 @@ This example demonstrates the core features: starting a concurrent task with `go
 
 ```python
 import time
-from gopy import go, new_channel
+from gopy import go, nc
 
 def producer(ch):
     """A producer "goroutine" that sends numbers over a channel."""
@@ -43,7 +43,7 @@ def producer(ch):
     print("Producer finished.")
 
 def main():
-    ch = new_channel()
+    ch = nc()
     go(producer, ch)
 
     # The main thread becomes the consumer.
@@ -117,7 +117,7 @@ def worker(ch):
     ch << "done"
 
 with GoroutineManager() as app:
-    ch = app.new_channel()
+    ch = app.nc()
     app.go(worker, ch)
     result = ch.get()
     print(f"Received '{result}' from worker.")

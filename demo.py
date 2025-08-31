@@ -1,6 +1,6 @@
 import time
 
-from gopy import go, new_channel
+from gopy import go, nc
 
 
 # A producer "goroutine"
@@ -27,7 +27,7 @@ def cpu_task():
 
 def main():
     # --- Channel Demo ---
-    ch = new_channel()
+    ch = nc()
     go(number_producer, ch)
 
     # The main thread becomes the consumer.

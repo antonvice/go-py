@@ -8,6 +8,6 @@ inspired by the concurrency model of the Go language.
 __author__ = "anton"
 __version__ = "0.1.1"
 
-from .app import Channel, GoroutineManager, go, new_channel
+from .app import Channel, GoroutineManager, go, nc
 
-__all__ = ["go", "new_channel", "GoroutineManager", "Channel"]
+__all__ = ["go", "nc", "GoroutineManager", "Channel"]

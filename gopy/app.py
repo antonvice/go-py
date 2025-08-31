@@ -126,7 +126,7 @@ class GoroutineManager:
 
         return asyncio.run_coroutine_threadsafe(_wrapper(), self._loop)
 
-    def new_channel(self, maxsize: int = 0) -> Channel:
+    def nc(self, maxsize: int = 0) -> Channel:
         """Creates a new channel for communication between goroutines."""
         return Channel(self._loop, maxsize)
 
@@ -159,4 +159,4 @@ _default_manager = GoroutineManager()
 _default_manager.start()
 
 go = _default_manager.go
-new_channel = _default_manager.new_channel
+nc = _default_manager.nc

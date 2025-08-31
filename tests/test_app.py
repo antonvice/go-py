@@ -61,7 +61,7 @@ def test_go_with_multiprocessing(app_manager):
 
 def test_channels_with_operators(app_manager):
     """Tests channel send/receive via operators and iteration."""
-    channel = app_manager.new_channel()
+    channel = app_manager.nc()
 
     def producer():
         time.sleep(0.1)
