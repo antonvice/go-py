@@ -34,15 +34,10 @@ Homepage = "https://github.com/antonvice/go-py"
 "Bug Tracker" = "https://github.com/antonvice/go-py/issues"
 
 [tool.bumpversion]
-current_version = "0.1.7"
+current_version = "0.1.8"
 commit = true
 tag = true
 message = "chore: Release v{new_version}"
-
-[[tool.bumpversion.files]]
-filename = "pyproject.toml"
-search = 'version = "{current_version}"'
-replace = 'version = "{new_version}"'
 
 [[tool.bumpversion.files]]
 filename = "pygoroutine/__init__.py"

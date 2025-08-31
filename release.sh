@@ -9,6 +9,7 @@ set -e
 # --- 1. Get the type of version bump ---
 BUMP_TYPE=$1
 
+# Check if a bump type is provided and is valid
 if [[ "$BUMP_TYPE" != "patch" && "$BUMP_TYPE" != "minor" && "$BUMP_TYPE" != "major" ]]; then
   echo "Error: Invalid or no bump type specified."
   echo "Usage: ./release.sh <patch|minor|major>"
