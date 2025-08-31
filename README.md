@@ -1,9 +1,8 @@
 # pygoroutine 🚀
 
-[![PyPI version](https://badge.fury.io/py/go-py.svg)](https://badge.fury.io/py/go-py)
-[![Build Status](https://github.com/antonvice/go-py/actions/workflows/python-package.yml/badge.svg)](https://github.com/antonvice/go-py/actions/workflows/python-package.yml)
+[![PyPI version](https://badge.fury.io/py/pygoroutine.svg)](https://badge.fury.io/py/pygoroutine)
+[![Build Status](https://github.com/antonvice/pygoroutine/actions/workflows/ci.yml/badge.svg)](https://github.com/antonvice/pygoroutine/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-
 **Go-like Concurrency in Python.**
 
 `pygoroutine` brings the simplicity and power of Go's concurrency model—goroutines and channels—to Python. It provides a dead-simple API to make concurrent programming feel effortless and intuitive, whether you're dealing with I/O-bound or CPU-bound tasks.
