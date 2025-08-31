@@ -1,0 +1,54 @@
+[project]
+name = "go-py"
+version = "0.1.0"
+description = "🚀 Go-like concurrency in Python with channels and true parallelism."
+readme = "README.md"
+authors = [{ name = "Anton Vice", email = "anton96vice@gmail.com"}]
+license = { file = "LICENSE" }
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Intended Audience :: Developers",
+]
+requires-python = ">=3.7"
+# No runtime dependencies are needed, so the `dependencies` key is omitted.
+
+[project.optional-dependencies]
+test = [
+    "pytest",
+    "flake8",
+    "black",
+    "isort",
+    "bump-my-version",
+]
+
+[project.urls]
+Homepage = "https://github.com/antonvice/go-py"
+"Bug Tracker" = "https://github.com/antonvice/go-py/issues"
+
+[tool.bumpversion]
+current_version = "0.1.0"
+commit = true
+tag = true
+message = "chore: Release v{new_version}"
+
+[[tool.bumpversion.files]]
+filename = "pyproject.toml"
+search = 'version = "{current_version}"'
+replace = 'version = "{new_version}"'
+
+[[tool.bumpversion.files]]
+filename = "gopy/__init__.py"
+search = '__version__ = "{current_version}"'
+replace = '__version__ = "{new_version}"'
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"

@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Build artifacts
+build/
+dist/
+*.egg-info/
+*.whl
+*.tar.gz
+
+# Virtual environment
+venv/
+.venv/
+
+# Test artifacts
+.pytest_cache/
+.coverage
+
+# IDEs
+.vscode/
+.idea/
+
+# macOS
+.DS_Store

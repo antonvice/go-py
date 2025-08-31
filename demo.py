@@ -1,40 +1,57 @@
-import asyncio
 import time
-from goroutine.app import go
+
+from gopy import go, new_channel
 
 
-# A normal func
-def task_1(n=2):
-    time.sleep(n)
-    print('Task_1_done')
-    return 'Result_1'
-
-# A coroutinefunction
-async def task_2(n=1):
-    await asyncio.sleep(n)
-    print('Task_2_done')
-    return 'Result_2'
-
-# Callback func
-def callback(result):
-    '''
-    Parameter "result" is the return from task.
-    Use functools.partial() to give arguments if you need more args at the beginning.
-    '''
-    print('-* callback *-')
-    print(result)
+# A producer "goroutine"
+def number_producer(ch):
+    """A producer 'goroutine' that sends messages over a channel."""
+    print("Producer starting...")
+    for i in range(5):
+        message = f"message {i}"
+        print(f"-> Sending: {message}")
+        ch << message  # So clean!
+        time.sleep(0.5)
+    ch.close()  # Signal that we're done
+    print("Producer finished.")
 
 
-if __name__ == '__main__':
-    go(task_1)
-    go(task_2)
+# A CPU-bound task
+def cpu_task():
+    """A CPU-bound task that performs a heavy calculation."""
+    print("CPU task starting...")
+    result = sum(i * i for i in range(10_000_000))
+    print("CPU task finished.")
+    return result
 
-    # The "callback" parameter must be specified separately.
-    go(task_1, 5, callback = callback)
-    go(task_2, 3, callback = callback)
-    print('END')
 
-    # Forever runing to show results.
-    while 1:
-        time.sleep(5)
-        
+def main():
+    # --- Channel Demo ---
+    ch = new_channel()
+    go(number_producer, ch)
+
+    # The main thread becomes the consumer.
+    # This loop will block and wait for values, then exit when the channel is closed.
+    print("Consumer waiting for messages...")
+    for received_message in ch:
+        print(f"<- Received: {received_message}")
+    print("Consumer finished.")
+
+    print("\n" + "-" * 20 + "\n")
+
+    # --- CPU-Bound Demo ---
+    # Fire and forget a CPU-intensive task in another process
+    future = go(cpu_task, process=True)
+    print("Main thread continues while CPU task runs in the background...")
+
+    # Do other work
+    time.sleep(1)
+    print("Main thread did some other work.")
+
+    # Now, wait for the result from the process
+    result = future.result()
+    print(f"Got result from CPU task: {result}")
+
+
+if __name__ == "__main__":
+    main()
