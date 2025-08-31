@@ -251,7 +251,7 @@ wheels = [
 ]
 
 [[package]]
-name = "go-py"
+name = "pygoroutine"
 version = "0.1.0"
 source = { editable = "." }
 dependencies = [
