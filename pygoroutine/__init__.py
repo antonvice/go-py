@@ -5,8 +5,8 @@ This library provides a simple, powerful API for concurrent programming,
 inspired by the concurrency model of the Go language.
 """
 
-__author__ = "Amtom Vice"
-__version__ = "0.1.5"
+__author__ = "Anton Vice"
+__version__ = "0.1.4"
 
 from .app import Channel, GoroutineManager, go, nc
 

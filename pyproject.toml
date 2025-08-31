@@ -1,6 +1,6 @@
 [project]
 name = "pygoroutine"
-version = "0.1.5"
+version = "0.1.4"  
 description = "🚀 Go-like concurrency in Python with channels and true parallelism."
 readme = "README.md"
 authors = [{ name = "Anton Vice", email = "anton96vice@gmail.com"}]
@@ -18,7 +18,6 @@ classifiers = [
     "Intended Audience :: Developers",
 ]
 requires-python = ">=3.7"
-# No runtime dependencies are needed, so the `dependencies` key is omitted.
 
 [project.optional-dependencies]
 test = [
@@ -30,14 +29,19 @@ test = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/antonvice/go-py"
-"Bug Tracker" = "https://github.com/antonvice/go-py/issues"
+Homepage = "https://github.com/antonvice/pygoroutine"
+"Bug Tracker" = "https://github.com/antonvice/pygoroutine/issues"
 
 [tool.bumpversion]
-current_version = "0.1.8"
+current_version = "0.1.4"  # <-- SYNCHRONIZED
 commit = true
 tag = true
 message = "chore: Release v{new_version}"
+
+[[tool.bumpversion.files]]
+filename = "pyproject.toml"
+search = 'version = "{current_version}"'
+replace = 'version = "{new_version}"'
 
 [[tool.bumpversion.files]]
 filename = "pygoroutine/__init__.py"
