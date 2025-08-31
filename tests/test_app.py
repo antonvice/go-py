@@ -2,8 +2,7 @@ import asyncio
 import time
 
 import pytest
-
-from gopy import GoroutineManager
+from pygoroutine import GoroutineManager
 
 
 def cpu_intensive_task(x):

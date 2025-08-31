@@ -1,6 +1,6 @@
 import time
 
-from gopy import go, nc
+from pygoroutine import go, nc
 
 
 # A producer "goroutine"

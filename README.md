@@ -1,4 +1,4 @@
-# go-py 🚀
+# pygoroutine 🚀
 
 [![PyPI version](https://badge.fury.io/py/go-py.svg)](https://badge.fury.io/py/go-py)
 [![Build Status](https://github.com/antonvice/go-py/actions/workflows/python-package.yml/badge.svg)](https://github.com/antonvice/go-py/actions/workflows/python-package.yml)
@@ -6,7 +6,7 @@
 
 **Go-like Concurrency in Python.**
 
-`go-py` brings the simplicity and power of Go's concurrency model—goroutines and channels—to Python. It provides a dead-simple API to make concurrent programming feel effortless and intuitive, whether you're dealing with I/O-bound or CPU-bound tasks.
+`pygoroutine` brings the simplicity and power of Go's concurrency model—goroutines and channels—to Python. It provides a dead-simple API to make concurrent programming feel effortless and intuitive, whether you're dealing with I/O-bound or CPU-bound tasks.
 
 ### Key Features
 
@@ -19,7 +19,7 @@
 ## Installation
 
 ```bash
-pip install go-py
+pip install pygoroutine
 ```
 
 ## Quick Start: The Go-like Way
@@ -28,7 +28,7 @@ This example demonstrates the core features: starting a concurrent task with `go
 
 ```python
 import time
-from gopy import go, nc
+from pygoroutine import go, nc
 
 def producer(ch):
     """A producer "goroutine" that sends numbers over a channel."""
@@ -64,7 +64,7 @@ if __name__ == "__main__":
 The `go()` function is the heart of the library. It runs any function or coroutine concurrently without blocking and returns a `Future` object.
 
 ```python
-from gopy import go
+from pygoroutine import go
 import time
 
 def my_sync_task(name):
@@ -93,7 +93,7 @@ Channels provide a safe and elegant way for your concurrent tasks to communicate
 Bypass Python's GIL by running CPU-bound tasks in a separate process with the `process=True` flag.
 
 ```python
-from gopy import go
+from pygoroutine import go
 
 def sum_squares(n):
     return sum(i * i for i in range(n))
@@ -109,7 +109,7 @@ print(f"Result from process: {result}")
 For libraries or applications needing explicit setup and teardown, use the `GoroutineManager`. It provides a context manager for clean, predictable lifecycle management.
 
 ```python
-from gopy import GoroutineManager
+from pygoroutine import GoroutineManager
 import time
 
 def worker(ch):
