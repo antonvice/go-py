@@ -1,6 +1,6 @@
 [project]
 name = "go-py"
-version = "0.1.3"
+version = "0.1.4"
 description = "🚀 Go-like concurrency in Python with channels and true parallelism."
 readme = "README.md"
 authors = [{ name = "Anton Vice", email = "anton96vice@gmail.com"}]
@@ -34,7 +34,7 @@ Homepage = "https://github.com/antonvice/go-py"
 "Bug Tracker" = "https://github.com/antonvice/go-py/issues"
 
 [tool.bumpversion]
-current_version = "0.1.3"
+current_version = "0.1.4"
 commit = true
 tag = true
 message = "chore: Release v{new_version}"

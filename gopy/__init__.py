@@ -6,7 +6,7 @@ inspired by the concurrency model of the Go language.
 """
 
 __author__ = "anton"
-__version__ = "0.1.3"
+__version__ = "0.1.4"
 
 from .app import Channel, GoroutineManager, go, nc
 
