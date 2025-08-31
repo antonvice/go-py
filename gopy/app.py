@@ -107,17 +107,16 @@ class GoroutineManager:
 
         awaitable = None
         if process:
+            # 1. Handle process-based tasks first
             awaitable = self._loop.run_in_executor(self._process_pool, obj, *args)
         elif asyncio.iscoroutinefunction(obj):
+            # 2. Handle async functions
             awaitable = obj(*args, **kwargs)
-            # asyncio.to_thread is only available in Python 3.9+
-            # For older versions, we use the equivalent loop.run_in_executor.
+        else:
+            # 3. Handle all other (sync) functions
             if sys.version_info >= (3, 9):
                 awaitable = asyncio.to_thread(obj, *args, **kwargs)
             else:
-                # functools.partial is needed to pass args/kwargs to the executor
-                import functools
-
                 p = functools.partial(obj, *args, **kwargs)
                 awaitable = self._loop.run_in_executor(None, p)
 
