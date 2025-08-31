@@ -1,4 +1,5 @@
 import asyncio
+import sys
 from concurrent.futures import Future, ProcessPoolExecutor
 from threading import Thread
 from typing import Any, Callable
@@ -109,8 +110,16 @@ class GoroutineManager:
             awaitable = self._loop.run_in_executor(self._process_pool, obj, *args)
         elif asyncio.iscoroutinefunction(obj):
             awaitable = obj(*args, **kwargs)
-        else:
-            awaitable = asyncio.to_thread(obj, *args, **kwargs)
+            # asyncio.to_thread is only available in Python 3.9+
+            # For older versions, we use the equivalent loop.run_in_executor.
+            if sys.version_info >= (3, 9):
+                awaitable = asyncio.to_thread(obj, *args, **kwargs)
+            else:
+                # functools.partial is needed to pass args/kwargs to the executor
+                import functools
+
+                p = functools.partial(obj, *args, **kwargs)
+                awaitable = self._loop.run_in_executor(None, p)
 
         async def _wrapper():
             return await awaitable
