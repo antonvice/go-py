@@ -2,6 +2,7 @@ import asyncio
 import time
 
 import pytest
+
 from pygoroutine import GoroutineManager
 
 

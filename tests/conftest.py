@@ -2,7 +2,7 @@
 
 import pytest
 
-import gopy.app
+import pygoroutine.app
 
 
 @pytest.fixture(scope="session", autouse=True)
@@ -21,5 +21,5 @@ def manage_global_goroutine_manager():
 
     # The code after the 'yield' runs at the very end of the test session.
     print("\nShutting down global goroutine manager...")
-    if gopy.app._default_manager._is_running:
-        gopy.app._default_manager.shutdown()
+    if pygoroutine.app._default_manager._is_running:
+        pygoroutine.app._default_manager.shutdown()
