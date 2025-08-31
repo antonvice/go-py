@@ -1,4 +1,5 @@
 import asyncio
+import functools
 import sys
 from concurrent.futures import Future, ProcessPoolExecutor
 from threading import Thread
