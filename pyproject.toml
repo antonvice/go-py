@@ -1,6 +1,6 @@
 [project]
 name = "pygoroutine"
-version = "0.1.9"  
+version = "0.1.10"  
 description = "🚀 Go-like concurrency in Python with channels and true parallelism."
 readme = "README.md"
 authors = [{ name = "Anton Vice", email = "anton96vice@gmail.com"}]
@@ -29,7 +29,7 @@ Homepage = "https://github.com/antonvice/pygoroutine"
 "Bug Tracker" = "https://github.com/antonvice/pygoroutine/issues"
 
 [tool.bumpversion]
-current_version = "0.1.9"  # <-- SYNCHRONIZED
+current_version = "0.1.10"  # <-- SYNCHRONIZED
 commit = true
 tag = true
 message = "chore: Release v{new_version}"
