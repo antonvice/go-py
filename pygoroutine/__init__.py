@@ -6,7 +6,7 @@ inspired by the concurrency model of the Go language.
 """
 
 __author__ = "Anton Vice"
-__version__ = "0.1.7"
+__version__ = "0.1.8"
 
 from .app import (
     GET,
