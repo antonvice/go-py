@@ -5,8 +5,8 @@ This library provides a simple, powerful API for concurrent programming,
 inspired by the concurrency model of the Go language.
 """
 
-__author__ = "anton"
-__version__ = "0.1.3"
+__author__ = "Anton Vice"
+__version__ = "0.1.6"
 
 from .app import (
     GET,
