@@ -1,5 +1,7 @@
 # tests/conftest.py
 
+import multiprocessing as mp
+
 import pytest
 
 import pygoroutine.app
@@ -23,3 +25,17 @@ def manage_global_goroutine_manager():
     print("\nShutting down global goroutine manager...")
     if pygoroutine.app._default_manager._is_running:
         pygoroutine.app._default_manager.shutdown()
+
+
+@pytest.fixture(scope="session", autouse=True)
+def set_multiprocessing_context():
+    """
+    Sets a safer multiprocessing start method for the entire test session
+    to avoid potential deadlocks and suppress DeprecationWarnings on Linux.
+    """
+    try:
+        # 'spawn' is safer as it creates a fresh process without inheriting locks.
+        mp.set_start_method("spawn", force=True)
+    except RuntimeError:
+        # This can happen if the context is already set.
+        pass
